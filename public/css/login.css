@@ -1,0 +1,326 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Lato, sans-serif;
+}
+
+html, body{
+    display: grid;
+    width: 100%;
+    height: 100%;
+    place-items: center;
+}
+
+.title-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title-form h4{
+    margin: 0 0 0 0;
+    font-weight: bold;
+    font-family: Roboto;
+    margin-bottom: 25px;
+}
+
+.title-form h4 .text{
+    font-weight: normal;
+}
+
+.container-form{
+    display: flex;
+    justify-content: center;
+}
+
+.wrapper{
+    height: 520px;
+    width: 450px;
+    background-color: white;
+    overflow: hidden;
+    outline: none;
+    border-radius: 5px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.slide-click{
+    display: flex;
+    justify-content: center;
+    background-color: #E0E0E0;
+    margin-bottom: 20px;
+}
+
+.slide-click .item-click{
+    padding: 20px 84px;
+    transition: 0.2s;
+}
+
+.slide-click .item-click a {
+    font-family: Lato;
+    font-weight: bold;
+}
+
+.active{
+    background-color: #fff;
+}
+
+.slide-click .item-click:hover{
+    background-color: #fff;
+}
+
+.slide-click .item-click a{
+    text-decoration: none;
+    color: #000;
+}
+
+.form-body{
+    display: flex;
+    width: 690px;
+    padding: 0 30px;
+    margin-top: 70px;
+    outline: none;
+    transition: 0.5s ease-in-out;
+}
+
+.form-body-second{
+    display: flex;
+    width: 690px;
+    margin-left: -109%;
+    padding: 0 30px;
+    margin-top: 70px;
+    outline: none;
+    transition: 0.5s ease-in-out;
+}
+
+.form-body hr{
+    width: 150px;
+    margin: 0 auto 15px;
+    border: 2.5px solid blue;
+    background-color: blue;
+    border-radius: 5px;
+}
+
+.form-body input:focus{
+    box-shadow: none;
+}
+
+.form-body-second input:focus{
+    box-shadow: none;
+}
+
+.form-body input{
+    padding: 10px;
+}
+
+.form-body-second input{
+    padding: 10px;
+}
+
+.form-body .form-login{
+    width: 700px;
+    margin-right: 100px;
+    position: relative;
+}
+
+.form-body-second .form-login{
+    width: 700px;
+    margin-right: 100px;
+    position: relative;
+}
+
+.form-body .form-login input[type="checkbox"]{
+    padding: 8px;
+}
+
+.form-body-second .form-login input[type="checkbox"]{
+    padding: 8px;
+}
+
+.form-body .form-login .check-forgot{
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-body-second .form-login .check-forgot{
+    display: flex;
+    justify-content: space-between;
+}
+
+.pass-link a{
+    text-decoration: none;
+    font-family: Roboto;
+}
+
+.register-link a{
+    text-decoration: none;
+}
+
+.register-body .input-group input {
+    font-family: Roboto;
+   
+}
+
+.register-body .input-group span {
+    border: 1px solid #BECBD5;
+    background-color: #F8FAFB;
+}
+
+.login-body .input-group input{
+    font-family: Roboto;
+    border: 1px solid #BECBD5;
+}
+
+.login-body .input-group span {
+    border: 1px solid #BECBD5;
+    background-color: #F8FAFB;
+}
+
+.login-link a{
+    text-decoration: none;
+}
+
+.form-check-label{
+    font-family: Roboto;
+}
+
+.btn-submit{
+    width: 390px;
+    margin: 25px auto 0px;
+    font-family: Roboto;
+}
+
+.btn-submit-register{
+    width: 390px;
+    margin: 19px auto 15px;
+}
+
+.btn-submit .button{
+    background-color: #807CF4;
+    width: 390px;
+    height: 50px;
+    outline: none;
+    border: 3px solid #807CF4;
+    margin: auto;
+    transition: .5s;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-submit .button:hover{
+    color: #807CF4;
+}
+
+.btn-submit .button::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 0%;
+    background: #fff;
+    transition: 0.8s;
+    border-radius: 0 0 50% 50%;
+    z-index: 0;
+}
+.btn-submit .button b{
+    position: relative;
+    z-index: 1;
+    transition: 250ms ease;
+}
+
+.btn-submit .button:hover b{
+    color: #807CF4;
+}
+
+.btn-submit .button:hover::before{
+    height: 180%;
+}
+
+.btn-submit-register .button{
+    background-color: #807CF4;
+    width: 390px;
+    height: 50px;
+    outline: none;  
+    border: 3px solid #807CF4;
+    margin: auto;
+    transition: .5s;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-submit-register .button:hover{
+    color: #807CF4;
+}
+
+.btn-submit-register .button::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 0%;
+    background: #fff;
+    transition: 0.8s;
+    border-radius: 0 0 50% 50%;
+    z-index: 0;
+}
+.btn-submit-register .button b{
+    position: relative;
+    z-index: 1;
+    transition: 250ms ease;
+}
+
+.btn-submit-register .button:hover b{
+    color: #807CF4;
+}
+
+.btn-submit-register .button:hover::before{
+    height: 180%;
+}
+
+
+.btn-back a{
+    color:#807CF4;
+    position: relative;
+    z-index: 2;
+}
+
+.btn-back:hover a{
+    color: #fff;
+}
+
+.btn-back a:focus{
+    box-shadow: none;
+}
+
+.btn-back{
+        border: 3px solid #807CF4;
+        border-radius: 5px;
+        width: 390px;
+        height: 50px;
+        margin: auto;
+        background:none;
+        /* padding: 10px 20px; */
+        font-weight: bold;
+        font-size: 20px;
+        transition: .5s;
+        position: relative;
+        overflow: hidden;
+    }
+
+.btn-back::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 0%;
+    background: #807CF4;
+    z-index: 1;
+    transition: 0.8s;
+    border-radius: 50% 50% 0 0;
+}
+
+.btn-back:hover::before{
+    height: 180%;
+}

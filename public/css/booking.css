@@ -1,0 +1,186 @@
+.tabs-content .content {
+    font-family: Roboto;
+    font-size: 14px;
+}
+
+.tabs-content .content .motorbike-details .price-list ul li i {
+    color: #A5A2F6;
+}
+
+.tabs-content .form-booking .booking-forms .forms-title {
+    margin-top: 135px;
+}
+
+.tabs-content .form-booking .booking-forms .content-forms .booking-button {
+    border-radius: 0px;
+    border: 3px solid #9793F5;
+    background: none;
+    color: black;
+    width: 100%;
+    font-family: Agency FB;
+    font-weight: bold;
+    font-size: 20px;
+    transition: .5s;
+    position: relative;
+    overflow: hidden;
+}
+
+.tabs-content .form-booking .booking-forms .content-forms .modal-button-close {
+    border: 3px solid #BECBD5;
+    background: none;
+    color: black;
+    font-family: Agency FB;
+    font-size: 20px;
+    transition: .5s;
+    position: relative;
+    overflow: hidden;
+}
+
+.tabs-content .form-booking .booking-forms .content-forms .modal-button-booking {
+    border: 3px solid #A5A2F6;
+    background: none;
+    color: black;
+    font-family: Agency FB;
+    font-size: 20px;
+    transition: .5s;
+    position: relative;
+    overflow: hidden;
+}
+
+.tabs-content .form-booking .booking-forms .content-forms .modal-button-close b{
+    position: relative;
+    z-index: 2;
+}
+
+.tabs-content .form-booking .booking-forms .content-forms .modal-button-booking b{
+    position: relative;
+    z-index: 2;
+}
+
+.tabs-content .form-booking .booking-forms .content-forms .booking-button:hover{
+    color: #fff;
+}
+
+.tabs-content .form-booking .booking-forms .content-forms .modal-button-close:hover{
+    color: #fff;
+}
+
+.tabs-content .form-booking .booking-forms .content-forms .modal-button-booking:hover{
+    color: #fff;
+}
+
+.tabs-content .form-booking .booking-forms .content-forms .booking-button::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 0%;
+    background: #A5A2F6;
+    z-index: -1;
+    transition: 0.8s;
+    border-radius: 0 0 50% 50%;
+}
+
+.tabs-content .form-booking .booking-forms .content-forms .modal-button-close::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 0%;
+    background: #BECBD5;
+    z-index: 1;
+    transition: 0.8s;
+    border-radius: 0 0 50% 50%;
+}
+
+.tabs-content .form-booking .booking-forms .content-forms .modal-button-booking::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 0%;
+    background: #A5A2F6;
+    z-index: 1;
+    transition: 0.8s;
+    border-radius: 0 0 50% 50%;
+}
+
+.tabs-content .form-booking .booking-forms .content-forms .booking-button:hover::before {
+    height: 180%;
+}
+
+.tabs-content .form-booking .booking-forms .content-forms .modal-button-close:hover::before {
+    height: 180%;
+}
+
+.tabs-content .form-booking .booking-forms .content-forms .modal-button-booking:hover::before {
+    height: 180%;
+}
+
+.go-back a{
+    font-family: Agency FB;
+    color: rgb(112, 112, 112);
+    font-weight: bold;
+    font-size: 25px;
+    text-decoration: underline;
+    transition: all .25s;
+}
+
+.go-back a:hover {
+    letter-spacing: 1px;
+    color: rgb(167, 167, 167);
+}
+
+#button-5 {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+#button-5 a {
+    position: relative;
+    transition: all .45s ease-Out;
+}
+
+#translate {
+    transform: rotate(50deg);
+    width: 100%;
+    height: 250%;
+    left: -200px;
+    top: -30px;
+    background: #16c72e;
+    position: absolute;
+    transition: all .3s ease-Out;
+}
+
+#button-5:hover #translate {
+    left: 0;
+}
+
+#button-5:hover a {
+    color: #fff;
+}
+
+.button {
+    display: inline-flex;
+    height: 50px;
+    width: 160px;
+    border: 2px solid #16c72e;
+    color: #16c72e;
+    text-decoration: none;
+    font-size: .8em;
+    letter-spacing: 2px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    font-size: 15px;
+}
+
+#button-5 a {
+    color: #16c72e;
+    text-decoration: none;
+    letter-spacing: 1px;
+}

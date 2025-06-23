@@ -1,0 +1,47 @@
+.tabs-content .card-profile .card-skills .skills {
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+}
+
+.tabs-content .card-profile .card-skills .skills p {
+    background-color: #A29FF5;
+}
+
+.tabs-content .card-profile .card-education .education {
+    font-family: Roboto;
+    font-size: 13px;
+    color: #908E9B;
+}
+
+.tabs-content .statistik-profile .name-profile{
+    font-size: 17px;
+    font-family: Roboto;
+    margin-top: 70px;
+}
+
+.tabs-content .statistik-profile .about-me {
+    font-family: Roboto;
+    margin-top: 50px;
+}
+
+.tabs-content .statistik-profile .about-me h6 {
+    font-size: 13px;
+    font-family: Lato;
+}
+
+.tabs-content .statistik-profile .about-me p {
+    font-size: 13px;
+    font-family: Roboto;
+}
+
+.hr{
+    width: 100%;
+    margin: -5px 0 0 10px;
+}
+
+.hr hr {
+    width: 100%;
+    border: 0.1px solid;
+}

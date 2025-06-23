@@ -1,0 +1,220 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    border: none;
+}
+
+.banner1 {
+    font-family: Lato;
+    color: #534D4D;
+}
+
+.banner1 h1{
+    font-family: Agency FB;
+    font-size: 50px;
+}
+
+.banner1 .tab-content .row .title-content{
+    margin-top: 100px;
+}
+
+.banner1 button {
+    border-radius: 0px;
+    border: 3px solid #9793F5;
+    background:none;
+    color: black;
+    padding: 10px 20px;
+    width: 175px;
+    font-family: Agency FB;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 120px;
+    transition: .5s;
+    position: relative;
+    overflow: hidden;
+}
+
+.banner1 button a{
+    transition: .5s;
+}
+
+.banner1 button:hover a{
+    color: #fff;
+}
+
+.banner1 button::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 0%;
+    background: #A5A2F6;
+    z-index: -1;
+    transition: 0.8s;
+    border-radius: 0 0 50% 50%;
+}
+
+.banner1 button:hover::before{
+    height: 180%;
+}
+
+.banner2 {
+    background-color: #FBFCFD;
+    margin-top: 6px;
+}
+
+.banner2 .col-lg-2 p {
+    padding: 15px 0px 0px 10px;
+    font-family: Roboto;
+    font-weight: bold;
+}
+
+.banner2 .col-lg-2 i {
+    padding: 15px 0px 0px 10px;
+    font-size: 25px;
+}
+
+.banner2 .col-lg-2{
+    border: 3px solid white;
+    width: 250px; 
+    margin: 5px 10px;
+}
+
+.banner2 .galka-deskp{
+    background-image: linear-gradient(to bottom right, #A5A2F6, #3D37F1 );
+    color: white;
+    padding: 20px 0px;
+}
+
+.banner2 .galka-deskp .galka-sosmed{
+    padding: 0 100px;
+}
+
+.banner2 .articel-content .row {
+    font-family: Roboto;
+    line-height: 25px;
+    padding: 50px 0;
+}
+
+.banner2 .articel-content p {
+    font-size: 14px;
+    color: rgb(85, 85, 85);
+}
+
+.banner2 .why-galkarent{
+    background-color: #2A1C59;
+}
+
+.banner2 .why-galkarent .tabs-content{
+    padding: 10px 0px;
+    color: white;
+    font-family: Roboto;
+    font-weight: bold;
+}
+
+.banner2 .why-galkarent .tabs-content i{
+    color: greenyellow;
+}
+
+
+
+.banner3 {
+    margin: 150px 0px;
+}
+
+.banner3 .motor {
+    margin-bottom: 70px;
+}
+
+.banner3 .card {
+    box-shadow: 1px 10px 40px #d8d7ff
+}
+
+.banner3 .product-content .card h5{
+    font-family: Roboto;
+    font-weight: bold;
+    color: gray;
+}
+
+.banner3 .product-content .card .card-body{
+    margin: 15px auto;
+    width: 50%;
+    padding: 6px 0px;
+    background: none;
+    border: 2px solid #9793F5;
+    transition: .5s;
+    position: relative;
+    overflow: hidden;
+}
+
+.banner3 .product-content .card .card-body a {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgb(100, 100, 100);
+    transition: .5s;
+    position: relative;
+}
+
+.banner3 .product-content .card .card-body:hover a {
+    color: #fff;
+}
+
+.banner3 .product-content .card .card-body::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 0%;
+    background: #A5A2F6;
+    z-index:    0;
+    transition: 0.8s;
+    border-radius: 40% 40% 0 0;
+}
+
+.banner3 .product-content .card .card-body:hover::before{
+    height: 180%;
+}
+
+.banner4{
+    background-color: #FBFCFD;
+}
+
+
+.banner4 .tab-content{
+    padding: 50px 0;
+}
+
+.banner4 .row .it-work{
+    background-color: #2A1C59;
+    padding: 40px 40px;
+}
+
+.banner4 .row .it-work i {
+    font-size: 40px;
+    padding-bottom: 20px;
+}
+
+
+.banner5{
+    margin-top: 120px;
+    margin-bottom: 180px;
+}
+
+.client-profile .image{
+    width: 100px;
+    height: 100px;
+    background-color: #c5c5c5;
+    border-radius: 50%;
+    margin-left: 15px;
+}
+
+.review-content .comment{
+    background-color: white;
+    padding: 5px 0;
+}
+

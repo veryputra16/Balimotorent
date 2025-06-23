@@ -1,0 +1,105 @@
+.banner {
+    height: 60vh;
+    background-image: url('../img//aboutus-bg.jpg');
+    background-size: cover;
+    margin-top: -200px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner:after{
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(90, 90, 90, .6) ;
+}
+
+.banner h2{
+    z-index: 1;
+    padding-top: 150px;
+    color: white;
+    font-family: Agency Fb;
+    font-weight: bold;
+    font-size: 60px;
+}
+
+
+.tabs-background{
+    background-color: #FBFCFD;
+}
+
+.tabs-content .tabs-title{
+    font-family: Roboto;
+    padding-top: 70px;
+}
+
+.tabs-content .tabs-about{
+    font-family: Roboto;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    line-height: 25px;
+    text-align: justify;
+    text-indent: 25px;
+    font-size: 14px;
+}
+
+.tabs-ourteam{
+    margin-top: 80px;
+}
+
+.card p{
+    font-size: 13px;
+    padding: 0 0 20px 0;
+}
+
+
+.tabs-ourteam .tabs-content .tabs-title{
+    font-family: Roboto;
+}
+
+.tabs-ourteam .tabs-content .card-team{
+    margin-top: 30px;
+}
+
+.tabs-ourteam .tabs-content .card a {
+    border-radius: 0px;
+    border: 3px solid #9793F5;
+    background: none;
+    color: black;
+    width: 175px;
+    font-family: Agency FB;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 10px;
+    padding: 5px 0px;
+    transition: .5s;
+    position: relative;
+    overflow: hidden;
+}
+
+.tabs-ourteam .tabs-content .card a:hover {
+    color: #fff;
+}
+
+.tabs-ourteam .tabs-content .card a::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 0%;
+    background: #A5A2F6;
+    z-index: -1;
+    transition: 0.8s;
+    border-radius: 0 0 50% 50%;
+}
+
+.tabs-ourteam .tabs-content .card a:hover::before {
+    height: 180%;
+}

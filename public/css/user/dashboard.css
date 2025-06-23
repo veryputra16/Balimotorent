@@ -1,0 +1,192 @@
+body{
+    font-family: Roboto;
+}
+
+ul li{
+    list-style: none;
+}
+
+.wrapper{
+    width: 90%;
+    margin: auto;
+}
+
+.background{
+    width:100%; 
+    /* background-color:#fff;
+    border: 1px solid #BECBD5; */
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.nav button{
+    color: #AAAAAA;
+}
+
+.nav button:hover{
+    color: #000;
+}
+
+.list-loan{
+    box-shadow: 0px 0px 30px -25px #333333;
+    padding: 10px;
+    margin: 20px 0;
+}
+
+.list-loan .motor-image{
+    width: 150px;
+}
+
+.delivery ul li{
+    font-size: 13px;
+}
+
+.return ul li {
+    font-size: 13px;
+}
+
+.data-second ul li{
+    font-size: 13px;
+}
+
+.tab-content {
+    overflow: auto;
+    height: 445px;
+}
+
+.modal-button-close {
+    border: 3px solid #BECBD5;
+    background: none;
+    color: black;
+    font-family: Agency FB;
+    font-size: 20px;
+    transition: .5s;
+    position: relative;
+    overflow: hidden;
+}
+
+.modal-button-close b{
+    position: relative;
+    z-index: 2;
+}
+
+.modal-button-close:hover{
+    color: #fff;
+}
+
+.modal-button-close::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 0%;
+    background: #BECBD5;
+    z-index: 1;
+    transition: 0.8s;
+    border-radius: 0 0 50% 50%;
+}
+
+.modal-button-close:hover::before {
+    height: 180%;
+}
+
+.modal-button-send {
+    border: 3px solid #A5A2F6;
+    background: none;
+    color: black;
+    font-family: Agency FB;
+    font-size: 20px;
+    transition: .5s;
+    position: relative;
+    overflow: hidden;
+}
+
+.modal-button-send b{
+    position: relative;
+    z-index: 2;
+}
+
+.modal-button-send:hover{
+    color: #fff;
+}
+
+.modal-button-send::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 0%;
+    background: #A5A2F6;
+    z-index: 1;
+    transition: 0.8s;
+    border-radius: 0 0 50% 50%;
+}
+
+.modal-button-send:hover::before {
+    height: 180%;
+}
+
+.modal-button-yes {
+    border: 3px solid #ffc107;
+    background: none;
+    color: black;
+    font-family: Agency FB;
+    font-size: 20px;
+    transition: .5s;
+    position: relative;
+    overflow: hidden;
+}
+
+.modal-button-yes b{
+    position: relative;
+    z-index: 2;
+}
+
+.modal-button-yes:hover{
+    color: #fff;
+}
+
+.modal-button-yes::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 0%;
+    background: #ffc107;
+    z-index: 1;
+    transition: 0.8s;
+    border-radius: 0 0 50% 50%;
+}
+
+.modal-button-yes:hover::before {
+    height: 180%;
+}
+
+.coba{
+    position: relative;
+}
+
+.coba .disabled{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.25);
+    top: 0;
+}
+
+.coba .title-disabled{
+    width: 120px;
+    position: absolute;
+    right: 0;
+    border-radius: 0 0 0 15px;
+    text-align: center;
+    font-weight: bold;
+    font-family: Agency Fb;
+    font-size: 18px;
+    padding: 10px;
+    background-color: #9793F5;
+    color: #fff;
+}

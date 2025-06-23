@@ -1,0 +1,117 @@
+.tabs-content .contact-title h2{
+    font-family: Agency Fb;
+    font-size: 40px;
+}
+
+.tabs-content .contact-title{
+    font-family: Lato;
+    font-weight: bold;
+}
+
+.tabs-content .contact-title h2 {
+    margin-top: 20px;
+}
+
+.text-form .input-group{
+    height: 40px;
+}
+
+.tabs-content-2{
+    margin-top: 0px;
+    padding: 20px 0;
+}
+
+.tabs-content-2 .row .col-lg-3{
+    background-color: #ffff;
+    margin: 10px 20px;
+    padding: 30px 20px;
+    box-shadow: 0px 0px 40px -30px #333333;
+    font-family: Roboto;
+    font-weight: bold;
+}
+
+.tabs-content-2 .row .col-lg-2 {
+    background-color: white;
+    margin: 10px 20px;
+    padding: 30px 20px;
+    box-shadow: 0px 0px 30px -25px #333333;
+    font-family: Roboto;
+    font-weight: bold;
+}
+
+
+.tabs-content-2 .row .col-lg-3 i {
+    color: black;
+}
+
+.tabs-content-2 .sosmed .row .col-lg-2 i {
+    color: black;
+}
+
+.tabs-content-2 .galka-info i{
+    font-size: 25px;
+    padding-right: 10px;
+    color: white;
+}
+.tabs-content-2 .galka-info p {
+    font-size: 14px;
+    color: white;
+}
+
+.tabs-content .text-form button{
+    border-radius: 0px;
+    border: 3px solid #9793F5;
+    background:none;
+    color: black;
+    /* padding: 10px 20px; */
+    width: 175px;
+    font-family: Agency FB;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 120px;
+    transition: .5s;
+    position: relative;
+    overflow: hidden;
+}
+
+.tabs-content .text-form button:hover{
+    color: #fff;
+}
+
+.tabs-content .text-form button::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 0%;
+    background: #A5A2F6;
+    z-index: -1;
+    transition: 0.8s;
+    border-radius: 0 0 50% 50%;
+}
+
+.tabs-content .text-form button:hover::before{
+    height: 180%;
+}
+
+.tabs-content .text-form .input-group span{
+    background-color: #F8FAFB;
+}
+
+.tabs-content .text-form input:focus{
+    box-shadow: none;
+    border: 1px #8784dd solid;
+}
+
+.tabs-content .text-form textarea:focus{
+    box-shadow: none;
+    border: 1px #8784dd solid;
+}
+
+/* ------------ */
+
+hr{
+    color: white;
+    border: 1px solid white;
+}

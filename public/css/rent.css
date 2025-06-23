@@ -1,0 +1,157 @@
+.tabs-content .title {
+    margin-bottom: -35px;
+}
+
+.tabs-content .title a {
+        
+    font-size: 27px;
+    margin-bottom: -100px;
+}
+
+.tabs-content .nav button {
+    color: grey;
+    font-family: Roboto;
+    font-size: 13px;
+}
+
+.tabs-content .tab-content .tab-pane {
+    margin-top: 20px;
+}
+
+.tabs-content .tab-content .motorbike-content-cover .col-lg-3 {
+    margin-top: 30px;
+}
+
+.tabs-content .tab-content .motorbike-content-cover .col-lg-3 a {
+    border-radius: 0px;
+    border: 3px solid #9793F5;
+    color: black;
+    background: none;
+    padding: 5px 0px;
+    width: 100%;
+    font-family: Agency FB;
+    font-weight: bold;
+    font-size: 20px;
+    transition: .5s;
+    z-index: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.tabs-content .tab-content .motorbike-content-cover .col-lg-3 a:hover {
+    color: #fff;
+}
+
+.tabs-content .tab-content .motorbike-content-cover .col-lg-3 a::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 0%;
+    background: #A5A2F6;
+    z-index: -1;
+    transition: 0.8s;
+    border-radius: 0 0 50% 50%;
+}
+
+.tabs-content .tab-content .motorbike-content-cover .col-lg-3 a:hover::before {
+    height: 180%;
+}
+
+#button-5 {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+#button-5 a {
+    position: relative;
+    transition: all .45s ease-Out;
+}
+
+#translate {
+    transform: rotate(50deg);
+    width: 100%;
+    height: 250%;
+    left: -200px;
+    top: -30px;
+    background: #fff;
+    position: absolute;
+    transition: all .3s ease-Out;
+}
+
+#button-5:hover #translate {
+    left: 0;
+}
+
+#button-5:hover a {
+    color: #9793F5;
+}
+
+.button {
+    display: inline-flex;
+    height: 50px;
+    width: 160px;
+    border: 2px solid #fff;
+    color: #fff;
+    text-decoration: none;
+    font-size: .8em;
+    letter-spacing: 2px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    font-size: 15px;
+}
+
+#button-5 a {
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.contact {
+    background-color: #9793F5;
+    margin-top: 200px;
+}
+
+.contact h4 {
+    font-family: Agency Fb;
+    font-size: 30px;
+    letter-spacing: 1.5px;
+}
+
+.contact .content {
+    padding: 40px 0;
+}
+
+.coba{
+    position: relative;
+}
+
+.coba .anchor-disabled{
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.coba .disabled{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.25);
+    top: 0;
+}
+
+.coba .title-disabled{
+    width: 120px;
+    position: absolute;
+    right: 0;
+    border-radius: 0 0 0 25px;
+    text-align: center;
+    font-weight: bold;
+    font-family: Agency Fb;
+    font-size: 20px;
+    padding: 10px;
+    background-color: #9793F5;
+    color: #fff;
+}
