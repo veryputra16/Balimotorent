@@ -11,7 +11,7 @@
     <script src="https://kit.fontawesome.com/5161569612.js" crossorigin="anonymous"></script>
 
 
-    <title>GALKARENT || {{ $title }}</title>
+    <title>Bali_Motorent || {{ $title }}</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -39,7 +39,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class='bx bx-wink-smile'></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">GALKA-RENT <sup>*</sup></div>
+                <div class="sidebar-brand-text mx-3">Bali_Motorent <sup></sup></div>
             </a>
 
             <!-- Divider -->

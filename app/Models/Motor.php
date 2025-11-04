@@ -21,4 +21,9 @@ class Motor extends Model
     protected $fillable = [
         'name', 'merk', 'year', 'image', 'transmition', 'engine', 'fuel', 'helm', 'coat', 'stok', 'price'
     ];
+
+    public function loans()
+    {
+        return $this->hasMany(Loan::class, 'motor_id');
+    }
 }

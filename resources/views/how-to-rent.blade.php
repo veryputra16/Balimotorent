@@ -17,7 +17,7 @@
                 <ul>
                     <h5>Rental Requirements</h5>
                     <li>1. ID Photo (KTP/Passport).</li>
-                    <li>2. SIM C Photo.</li>
+                    <li>2. SIM C Photo. (driving license)</li>
                     <li>3. Flights Ticket Photo or Format.</li>
                     <li>4. Hotel Reservation Photo or Format.</li>
                     <li>5. 2 Days Rent Durations Minimal.</li>

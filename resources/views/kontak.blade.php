@@ -22,7 +22,7 @@
         </div>
         {{-- form --}}
         <div class="text-form">
-            <form name="galka-contact-us">
+            <form name="balimotorent-contact-us">
                 <div class="row justify-content-center">
                     <div class="col-lg-3 col-sm-12">
                         <div class="input-group mb-3">
@@ -63,25 +63,25 @@
     <div class="galka-info text-center">
         <div class="row justify-content-center">
             <div class="col-lg-3 addres d-flex justify-content-center" data-aos="flip-left" data-aos-duration="1000">
-                <i class='fas fa-map-marker-alt' ></i>Jl. Raya Puputan No.86, Dangin Puri Klod, Kec. Denpasar Tim., Kota Denpasar, Bali 80234
+                <i class='fas fa-map-marker-alt' ></i>Jl. Raya Semer Gg Tunjung Mekar 7, Kerobokan, Kec Kuta Utara, Kabupaten Badung, Bali
             </div>
             <div class="col-lg-3 email d-flex justify-content-center" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="100">
-                <i class='fas fa-envelope'></i>galkarent@gmail.com
+                <i class='fas fa-envelope'></i>bali_motorent@gmail.com
             </div>
             <div class="col-lg-3 telp d-flex justify-content-center" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="150">
-                <i class='fas fa-phone' ></i>+62 8595-3929-150
+                <i class='fas fa-phone' ></i>+62 877-6140-9505
             </div>
         </div>
         <div class="sosmed">
             <div class="row justify-content-center">
                 <div class="col-lg-2 d-flex justify-content-center" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="200">
-                    <i class='fab fa-instagram-square'></i> @Galka_rental
+                    <i class='fab fa-instagram-square'></i> @bali_motorent
                 </div>
                 <div class="col-lg-2 d-flex justify-content-center" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="250">
-                    <i class='fab fa-twitter' ></i> @Galka_MotorBike
+                    <i class='fab fa-twitter' ></i> @bali_motorent
                 </div>
                 <div class="col-lg-2 d-flex justify-content-center" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="300">
-                    <i class='fab fa-facebook' ></i> @GalangKauh
+                    <i class='fab fa-facebook' ></i> @bali_motorent
                 </div>
             </div>
         </div>
@@ -329,11 +329,11 @@
         var map = new google.maps.Map(document.getElementById('map'), {
             zoom : 15,
             // center : {lat : 38.897701, lng : -77.036537},
-            center : {lat : -8.673240168207064, lng : 115.22657704761126},
+            center : {lat : -8.652977329462539, lng: 115.16335967789392},
             style: mapStyle
         });
         // var marker = new google.maps.Marker({position: {lat : 38.897701, lng: -77.036537}, map: map});
-        var marker = new google.maps.Marker({position: {lat : -8.673240168207064, lng: 115.22657704761126}, map: map});
+        var marker = new google.maps.Marker({position: {lat : -8.652977329462539, lng: 115.16335967789392}, map: map}); 
 
     }
 </script>
@@ -342,8 +342,9 @@
 
 {{-- SCRIPT FORM CONTACT US --}}
 <script>
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbxxZ58QA5-_TsnqOz0ykqgiKZuFaE8k1SwdDwVGelEg_w8MFP4VMZ72m3Hbcc6lcZiF/exec';
-  const form = document.forms['galka-contact-us'];
+  // const scriptURL = 'https://script.google.com/macros/s/AKfycbxxZ58QA5-_TsnqOz0ykqgiKZuFaE8k1SwdDwVGelEg_w8MFP4VMZ72m3Hbcc6lcZiF/exec'; // old url for tsting
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbynXwaCIFag44P_hfJTzo8wNI_NiHApe7RBAYAxneINSr14HmWMe8VkwTmm4LEkIcnc/exec';
+  const form = document.forms['balimotorent-contact-us'];
   const btnKirim = document.querySelector('.btn-kirim');
   const btnLoading = document.querySelector('.btn-loading');
   const alert = document.querySelector('.alert');

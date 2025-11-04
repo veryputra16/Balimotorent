@@ -107,7 +107,7 @@
 
 
 
-    <title>GalkaRENT || {{ $title }}</title>
+    <title>Bali_Motorent || {{ $title }}</title>
 
         <style>
             body{
@@ -139,6 +139,10 @@
 
     {{-- GSAP --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
     @if (session()->has('success') || session()->has('failed') || session()->has('graceLoan'))
         <div id="modal-backdrop" class="modal-backdrop fade show"></div>
     @endif

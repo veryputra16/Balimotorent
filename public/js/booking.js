@@ -161,6 +161,49 @@ function bikeReturn(val){
     }
 }
 
+// Validate minimum rent 2 days with SweetAlert2
+document.addEventListener("DOMContentLoaded", function () {
+    const deliveryDate = document.getElementById("deliveryDate");
+    const returnDate = document.getElementById("returnDate");
+    const bookButton = document.getElementById("buttonModal");
+    const invalidMessage = document.getElementById("invalid");
+    const invalidFormMessage = document.getElementById("invalid-form-message");
+
+    function checkDateDifference() {
+        const dDate = new Date(deliveryDate.value);
+        const rDate = new Date(returnDate.value);
+
+        if (!deliveryDate.value || !returnDate.value) {
+            return;
+        }
+
+        const diffTime = rDate - dDate;
+        const diffDays = diffTime / (1000 * 60 * 60 * 24);
+
+        if (diffDays < 2) {
+            // tampilkan notifikasi popup
+            Swal.fire({
+                icon: "warning",
+                title: "Durasi sewa terlalu pendek!",
+                text: "Minimal lama sewa adalah 2 hari.",
+                confirmButtonText: "Oke, ubah tanggal",
+            }).then(() => {
+                returnDate.value = ""; // reset input return date
+                invalidMessage.textContent = "Minimal sewa adalah 2 hari!";
+                invalidFormMessage.style.display = "block";
+                invalidFormMessage.textContent = "⚠️ Lama sewa minimal 2 hari!";
+                bookButton.disabled = true;
+            });
+        } else {
+            invalidMessage.textContent = "";
+            invalidFormMessage.style.display = "none";
+            bookButton.disabled = false;
+        }
+    }
+
+    returnDate.addEventListener("change", checkDateDifference);
+});
+
 // function invalidMessage(){
 //     const valueDeliverBike = document.querySelector('.bike-deliver').value;
 //     const valueReturnBike = document.querySelector('.bike-return').value;

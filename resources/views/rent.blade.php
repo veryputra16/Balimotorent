@@ -106,30 +106,30 @@
                             </div>
                             @endforeach
                         @else
-                            @foreach ($topPick as $pick)
-                            <div class="col-lg-3 col-md-6 d-flex justify-content-center {{ ($pick->motor->stok == 0) ? 'coba':'' }}">
+                        @foreach ($topPick as $pick)
+                            <div class="col-lg-3 col-md-6 d-flex justify-content-center {{ ($pick->stok == 0) ? 'coba':'' }}">
                                 <div class="card">
                                     <div class="container">
-                                        @if ($pick->motor->transmition == "Autometic")
-                                            <img src="/storage/{{ $pick->motor->image }}" class="card-img-top" alt="...">             
-                                        @else
-                                            <img src="/storage/{{ $pick->motor->image }}" class="card-img-top" alt="...">
-                                        @endif
+                                        <img src="/storage/{{ $pick->image }}" class="card-img-top" alt="{{ $pick->name }}">
                                         <div class="card-body">
-                                            <p class="card-text fs-5"><strong>{{ $pick->motor->name }}</strong></p>
-                                            <p class="card-text text-secondary" style="margin-top: -15px">{{ $pick->motor->year }}</p>
-                                            <p class="card-text text-secondary">From Rp. {{ number_format($pick->motor->price, 2, ",", ".") }} / Day</p>
-                                            <a type="button" class="text-center {{ ($pick->motor->stok == 0) ? 'anchor-disabled':'' }}" href="/rent/{{ $pick->motor->name }}">RENT NOW</a>
+                                            <p class="card-text fs-5"><strong>{{ $pick->name }}</strong></p>
+                                            <p class="card-text text-secondary" style="margin-top: -15px">{{ $pick->year }}</p>
+                                            <p class="card-text text-secondary">
+                                                From Rp. {{ number_format($pick->price, 2, ",", ".") }} / Day
+                                            </p>
+                                            <a type="button" class="text-center {{ ($pick->stok == 0) ? 'anchor-disabled':'' }}" href="/rent/{{ $pick->name }}">RENT NOW</a>
                                         </div>
                                     </div>
-                                    @if ($pick->motor->stok == 0)
+                                    @if ($pick->stok == 0)
                                         <div class="disabled">
-                                            <h6 class="title-disabled">UNAVAIBLE</h6>
+                                            <h6 class="title-disabled">UNAVAILABLE</h6>
                                         </div>
                                     @endif
                                 </div>
                             </div>
-                            @endforeach
+
+                            
+                        @endforeach
                         @endif
                         {{-- END --}}
                     </div>
@@ -206,7 +206,7 @@
         <h4 class="fw-bold pt-2 pb-2">MESSAGE US ON WHATSAPP</h4>
         <div class="button" id="button-5">
             <div id="translate"></div>
-            <a href="https://wa.me/+6285953929150"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="https://wa.me/+6287761409505"><i class="fab fa-whatsapp"></i> WhatsApp</a>
         </div>
     </div>
 </div>

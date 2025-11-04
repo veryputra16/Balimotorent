@@ -12,24 +12,24 @@
     <div class="container"> 
         <div class="tabs-content">
             <div class="tabs-title text-center">
-                <h4>About <b>Galka</b><span>Rent</span></h4>
+                <h4>About <b>Bali_</b><span>Motorent</span></h4>
             </div>
             <div class="tabs-about">
                 <div class="row">
                     <div class="col-lg-6">
-                        <p>Galkarent Adalah sebuah website peminjaman motor secara online terbaik di Bali, yang didirikan pada tahun 2022 dan memeliki banyak post motor di seputar bali. Galkarent sendiri merupakan instansi atau perusahaan penyewaan motor yang terjamin aman dan terpercaya 
+                        <p>Bali Motorent Adalah sebuah website peminjaman motor secara online terbaik di Bali, yang didirikan pada tahun 2024 dan memeliki banyak post motor di seputar bali. Bali Motorent sendiri merupakan instansi atau perusahaan penyewaan motor yang terjamin aman dan terpercaya 
                             karena telah mendapat ijin perusahaan(IMB) dan juga Tanda Daftar Perushaan (TDP) sesuai Pasal 1 huruf a Undang-Undang Nomor 3 Tahun 1982 tentang Wajib Daftar Perusahaan (“UU 3/1982”).
-                            Galkarent memiliki visi dan misi untuk sentiasa melayani setiap pelanggan dengan senyuman dan memberikan servis terbaik kepada setiap pelanggan dan memberikan penggalaman yang mengesankan bersama Galkarent
+                            Bali Motorent memiliki visi dan misi untuk sentiasa melayani setiap pelanggan dengan senyuman dan memberikan servis terbaik kepada setiap pelanggan dan memberikan penggalaman yang mengesankan bersama Bali Motorent
                         </p>
-                        <p style="margin-left: 100px">GALKARENT NYAMAN MOTORNYA, NYAMAN DOMPETNYA</p>
+                        <p style="margin-left: 100px">Bali Motorent NYAMAN MOTORNYA, NYAMAN DOMPETNYA</p>
                     </div>
                     <div class="col-lg-6">
-                        <p>Galkarent is the best online motorbike loan site in Bali, which was founded in 2022 and has many motorbike posts around Bali. Galkarent itself is an agency or motorbike rental company that is guaranteed to be safe and reliable
+                        <p>Bali Motorent is the best online motorbike loan site in Bali, which was founded in 2024 and has many motorbike posts around Bali. Bali Motorent itself is an agency or motorbike rental company that is guaranteed to be safe and reliable
                             because it has obtained a company license (IMB) and also a Company Registration Certificate (TDP) in accordance with Article 1 letter a of Law Number 3 of 1982 concerning Mandatory Company Registration ("Law 3/1982").
-                            Galkarent has a vision and mission to always serve every customer with a smile and provide the best service to every customer and provide an impressive experience with Galkarent
+                            Bali Motorent has a vision and mission to always serve every customer with a smile and provide the best service to every customer and provide an impressive experience with Bali Motorent
                         </p>
                         <br>
-                        <p style="margin-left: 70px">GALKARENT COMFORTABLE MOTORBIKE, COMFORTABLE IN YOUR WALLET</p>
+                        <p style="margin-left: 70px">Bali Motorent COMFORTABLE MOTORBIKE, COMFORTABLE IN YOUR WALLET</p>
                     </div>
                 </div>
             </div>

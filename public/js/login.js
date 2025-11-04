@@ -23,12 +23,14 @@ clicklogin.addEventListener("click", function(){
     itemclicklogin.style.backgroundColor = 'white';
     itemclickregister.style.backgroundColor = '#E0E0E0';
     formbody.style.marginLeft = '0%';
+    history.pushState(null, "", "?mode=login"); // Update URL without reloading
 });
 
 clickregister.addEventListener("click", function(){
     itemclickregister.style.backgroundColor = 'white';
     itemclicklogin.style.backgroundColor = '#E0E0E0';
     formbody.style.marginLeft = '-109%';
+    history.pushState(null, "", "?mode=register"); // Update URL without reloading
 });
 
 loginHref.addEventListener("click", function(){
@@ -43,4 +45,22 @@ loginHref.addEventListener("click", function(){
 
 closeButton.addEventListener("click", function(){
     modal.style.display = 'none';
+});
+
+// === BACA MODE DARI URL SAAT PAGE LOAD ===
+document.addEventListener("DOMContentLoaded", function() {
+    const params = new URLSearchParams(window.location.search);
+    const mode = params.get("mode");
+
+    if (mode === "register") {
+        // tampilkan form register
+        itemclickregister.style.backgroundColor = 'white';
+        itemclicklogin.style.backgroundColor = '#E0E0E0';
+        formbody.style.marginLeft = '-109%';
+    } else {
+        // tampilkan form login
+        itemclicklogin.style.backgroundColor = 'white';
+        itemclickregister.style.backgroundColor = '#E0E0E0';
+        formbody.style.marginLeft = '0%';
+    }
 });

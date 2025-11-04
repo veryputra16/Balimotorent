@@ -23,7 +23,7 @@
                     <img style="margin-left: 0px; margin-top:-15px;" src="img/logo.png" width="80">
                 @endif  
 
-                <a class="navbar-brand mt-1" href="/"><div style="display: inline-block; color:#3D37F1;"><h4 class="fw-bold mt-2">Galka</h4></div><div style="display: inline-block;"><h4 class="fw-bold">Rent</h4></div></a>
+                <a class="navbar-brand mt-1" href="/"><div style="display: inline-block; color:#3D37F1;"><h4 class="fw-bold mt-2">Bali_</h4></div><div style="display: inline-block;"><h4 class="fw-bold">Motorent</h4></div></a>
             </div>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -79,10 +79,10 @@
                         </li>
                     @else
                         <li class="nav-item">
-                            <a class="nav-link strip {{ ($title === "Login") ? 'active' : '' }}" href="/signin">LOG IN</a>
+                            <a class="nav-link strip {{ ($title === "Login") ? 'active' : '' }}" href="/signin?mode=login">LOG IN</a>
                         </li>
                         <li class="nav-item register ms-3">
-                            <a class="nav-link " href="/signup" style="width:85px; background-image: linear-gradient(to right, #3D37F1 , #A5A2F6  ); border-radius:50px; padding:7px 20px; color:white;">SIGN UP</a>
+                            <a class="nav-link " href="/signin?mode=register" style="width:85px; background-image: linear-gradient(to right, #3D37F1 , #A5A2F6  ); border-radius:50px; padding:7px 20px; color:white;">SIGN UP</a>
                         </li>
                     @endauth
                 </ul>

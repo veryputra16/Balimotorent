@@ -87,7 +87,7 @@
                             </div>
                         </div>
                         <div class="mb-3">
-                                <label for="telpon" class="form-label">Telepon</label>
+                                <label for="telpon" class="form-label">Phone</label>
                                 <input type="text" class="form-control @error('telpon') is-invalid @enderror" id="telpon"  value="{{ old('telpon', $user->telpon) }}" name="telpon">
                                 @error('telpon')
                                     <div class="invalid-feedback">

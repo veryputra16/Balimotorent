@@ -36,7 +36,7 @@
     
 
 
-    <title>GalkaRENT || {{ $title }}</title>
+    <title>Bali_Morotent || {{ $title }}</title>
 </head>
 <body>
 
@@ -98,10 +98,10 @@
         
         {{-- //Button Click Form Login And Form Register --}}
         <div class="slide-click" id="slide-click">
-          <div class="item-click {{ ($slug == "login-page") ? "active" : '' }}" id="item-click-login">
+          <div class="item-click" id="item-click-login">
             <a href="#" class="click-login" id="click-login">LOGIN</a>
           </div>
-          <div class="item-click {{ ($slug == "register-page") ? "active" : '' }}" id="item-click-register">
+          <div class="item-click" id="item-click-register">
             <a href="#" class="click-register" id="click-register">REGISTER</a>
           </div>
         </div>
@@ -192,6 +192,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <script src="js/login.js"></script>
+
 </body>
 </html>
 

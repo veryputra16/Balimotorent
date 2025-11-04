@@ -34,12 +34,18 @@ class RentController extends Controller
             'nmax' => Motor::where('id', 8)->get(),
             'vespa' => Motor::where('id', 10)->get(),
             'vixion' => Motor::where('id', 9)->get(),
-            'topPick' => Loan::query()->selectRaw('count(motor_id) as total_motor_id, motor_id')->groupBy('motor_id')->orderBy('total_motor_id', 'desc')->take(4)->get(),
+
+            // 🔥 Ambil langsung motor dengan peminjaman terbanyak
+            'topPick' => Motor::withCount('loans')
+                ->orderBy('loans_count', 'desc')
+                ->take(4)
+                ->get(),
+
             'dataManually' => Motor::where("transmition", "Manual")->get(),
             'dataAutometic' => Motor::where("transmition", "Autometic")->get()
-
         ]);
     }
+
 
     //   /**
     //  * Menampilkan detail motor berdasarkan ID.

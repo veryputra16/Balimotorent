@@ -45,6 +45,26 @@
             
             <div class="collapse show" id="collapseCard">
                 <div class="card-body ">
+
+                    {{-- Filter Section --}}
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            <select id="filterStock" class="form-control">
+                                <option value="all">All Stock</option>
+                                <option value="available">Available Only</option>
+                                <option value="unavailable">Unavailable Only</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <select id="filterTransmisi" class="form-control">
+                                <option value="all">All Transmisi</option>
+                                <option value="Manual">Manual</option>
+                                <option value="Automatic">Automatic</option>
+                            </select>
+                        </div>
+                    </div>
+                    {{-- End Filter Section --}}
+
                     <div class="row">
                         <div class="col-12">
                             <form action="/admin/motor">
@@ -63,9 +83,20 @@
                         <div class="row">
                             @foreach ($motor as $m)
                                 <div class="col-lg-3 mb-4">
-                                    <div class="card shadow" style="width: 18rem;">
+                                    <div class="card shadow motor-card" style="width: 18rem;" 
+                                    data-stock="{{ $m->stok > 0 ? 'available' : 'unavailable' }}"
+                                    data-transmisi="{{ $m->transmition }}">
 
-                                        <img src="../storage/{{ $m->image }}" class="card-img-top" alt="">
+                                        <div class="position-relative">
+                                            <img src="../storage/{{ $m->image }}" class="card-img-top" alt="">
+
+                                            @if ($m->stok == 0)
+                                                <div class="position-absolute w-100 h-100 d-flex align-items-center justify-content-center"
+                                                    style="top:0; left:0; background:rgba(0,0,0,0.6); z-index:10;">
+                                                    <h6 class="text-white font-weight-bold">UNAVAILABLE</h6>
+                                                </div>
+                                            @endif
+                                        </div>
 
                                         <div class="card-body">
                                             <h5 class="card-title">{{ $m->name }}</h5>
@@ -175,5 +206,36 @@
         </div>
         {{ $motor->links() }}
     </div>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const filterStock = document.getElementById("filterStock");
+        const filterTransmisi = document.getElementById("filterTransmisi");
+        const cards = document.querySelectorAll(".motor-card");
+
+        function applyFilter() {
+            const stockValue = filterStock.value;
+            const transmisiValue = filterTransmisi.value;
+
+            cards.forEach(card => {
+                const stock = card.getAttribute("data-stock");
+                const transmisi = card.getAttribute("data-transmisi");
+
+                let stockMatch = (stockValue === "all" || stock === stockValue);
+                let transmisiMatch = (transmisiValue === "all" || transmisi === transmisiValue);
+
+                if (stockMatch && transmisiMatch) {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        }
+
+        filterStock.addEventListener("change", applyFilter);
+        filterTransmisi.addEventListener("change", applyFilter);
+    });
+    </script>
+
 
 @endsection

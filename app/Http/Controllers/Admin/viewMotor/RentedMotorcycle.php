@@ -11,12 +11,35 @@ use Dompdf\Options;
 
 class RentedMotorcycle extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        $search = $request->input('search');
+        $deliveryDate = $request->input('delivery_date');
+        $returnDate = $request->input('return_date');
+
+        $loans = Loan::with(['user', 'motor'])
+            ->when($search, function ($query, $search) {
+                $query->where(function ($q) use ($search) {
+                    $q->whereHas('user', function ($userQuery) use ($search) {
+                        $userQuery->where('name', 'like', "%{$search}%")
+                                ->orWhere('telpon', 'like', "%{$search}%");
+                    })->orWhereHas('motor', function ($motorQuery) use ($search) {
+                        $motorQuery->where('name', 'like', "%{$search}%");
+                    });
+                });
+            })
+            ->when($deliveryDate, function ($query, $deliveryDate) {
+                $query->whereDate('delivery_date', '>=', $deliveryDate);
+            })
+            ->when($returnDate, function ($query, $returnDate) {
+                $query->whereDate('return_date', '<=', $returnDate);
+            })
+            ->paginate(12)
+            ->appends(request()->query()); // supaya pagination tetap membawa filter
+
         return view('admin.create-motor.rented', [
             'title' => 'rented-motorcycle',
-            'loan' => Loan::paginate(12),
-            // 'loan' => Loan::latest()->filter(request(['search']))->paginate(12)
+            'loan' => $loans,
         ]);
     }
 
@@ -31,17 +54,40 @@ class RentedMotorcycle extends Controller
         
         
     
-    public function generatePDF()
+    public function generatePDF(Request $request)
     {
-        $loans = Loan::all();// Ambil data yang sedang disewa
+        // Tangkap filter dari request
+        $search = $request->input('search');
+        $deliveryDate = $request->input('delivery_date');
+        $returnDate = $request->input('return_date');
 
+        // Gunakan logika filter yang sama seperti di index()
+        $loans = Loan::with(['user', 'motor'])
+            ->when($search, function ($query, $search) {
+                $query->where(function ($q) use ($search) {
+                    $q->whereHas('user', function ($userQuery) use ($search) {
+                        $userQuery->where('name', 'like', "%{$search}%")
+                                ->orWhere('telpon', 'like', "%{$search}%");
+                    })->orWhereHas('motor', function ($motorQuery) use ($search) {
+                        $motorQuery->where('name', 'like', "%{$search}%");
+                    });
+                });
+            })
+            ->when($deliveryDate, function ($query, $deliveryDate) {
+                $query->whereDate('delivery_date', '>=', $deliveryDate);
+            })
+            ->when($returnDate, function ($query, $returnDate) {
+                $query->whereDate('return_date', '<=', $returnDate);
+            })
+            ->get(); // get semua hasil filter (tanpa paginate)
+
+        // Siapkan data untuk PDF
         $data = [
             'title' => 'Laporan Peminjaman Motor',
             'date' => date('d-m-Y'),
             'loans' => $loans
         ];
 
-        // Render Blade View jadi HTML
         $html = view('admin.create-motor.pdf', $data)->render();
 
         // Konfigurasi DOMPDF
@@ -53,7 +99,6 @@ class RentedMotorcycle extends Controller
         $dompdf->setPaper('A4', 'portrait');
         $dompdf->render();
 
-        // Output PDF ke browser
         return response($dompdf->output(), 200)->header('Content-Type', 'application/pdf');
     }
 }

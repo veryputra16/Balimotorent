@@ -56,6 +56,9 @@ Route::post('/rent', [RentController::class, 'booking']);
 Route::get('/about', [AboutController::class, 'index']);
 Route::get('/profile/{admin:name}', [AboutController::class, 'profile']);
 
+//our customer review
+// Route::get('/', [App\Http\Controllers\ReviewController::class, 'index']);
+
 Route::middleware('auth')->group(function(){
     Route::post('/logout', [LogoutController::class, 'logout'])->name("");
 });
@@ -66,20 +69,26 @@ Route::delete('/user/{user:username}/dashboard/{loan}', [UserDashboardController
 
 Route::resource('/user', DashboardProfileController::class)->middleware('auth');
 
+// Route::middleware('guest')->group(function(){
+//     // ROUTE LOGIN & REGISTER
+//     Route::get('/signin', [LoginController::class, 'index'])->name('signin');
+//     Route::post('/signin', [LoginController::class, 'authenticate']);
+    
+//     //ROUTE LOGIN & REGISTER
+//     Route::get('/signup', [LoginController::class, 'register'])->name('signup');
+//     Route::post('/signup', [LoginController::class, 'register_post']);
+// });
+
 Route::middleware('guest')->group(function(){
-    // ROUTE LOGIN & REGISTER
     Route::get('/signin', [LoginController::class, 'index'])->name('signin');
     Route::post('/signin', [LoginController::class, 'authenticate']);
-    
-    //ROUTE LOGIN & REGISTER
-    Route::get('/signup', [LoginController::class, 'register'])->name('signup');
     Route::post('/signup', [LoginController::class, 'register_post']);
 });
 
 
-
 // ROUTE ADMIN 
-Route::get('/admin/home', [AdminDashboardController::class, 'Hal_Admin']);
+// Route::get('/admin/home', [AdminDashboardController::class, 'Hal_Admin']);
+Route::get('/admin/home', [AdminDashboardController::class, 'Hal_Admin'])->name('admin.dashboard');
 Route::resource('/admin/user', AdminviewUserUserController::class);
 Route::resource('/admin/admin', AdminviewAdminAdminController::class);
 Route::resource('/admin/motor', AdminviewMotorMotorController::class);
@@ -92,4 +101,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 //Route CONVERT PDF
-Route::get('/admin/motors/rented/pdf', [AdminviewMotorRentedController::class, 'generatePDF']);
+// Route::get('/admin/motors/rented/pdf', [AdminviewMotorRentedController::class, 'generatePDF']);
+Route::get('/admin/motors/rented/pdf', [AdminviewMotorRentedController::class, 'generatePDF'])->name('admin.motors.rented.pdf');
