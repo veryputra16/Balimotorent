@@ -87,13 +87,28 @@ Route::middleware('guest')->group(function(){
 
 
 // ROUTE ADMIN 
+// ========== ADMIN LOGIN ==========
+Route::get('/admin/admin-login', [AdminLoginController::class, 'Hal_Admin_login'])->name('admin.login');
+Route::post('/admin/login', [AdminLoginController::class, 'loginAdmin'])->name('admin.login.post');
+Route::post('/admin/logout', [AdminLoginController::class, 'logout'])->name('admin.logout');
+
+// ========== ADMIN AREA (PROTECTED) ==========
+Route::middleware('auth:admin')->prefix('admin')->group(function () {
+    Route::get('/home', [AdminDashboardController::class, 'Hal_Admin'])->name('admin.dashboard');
+    Route::resource('/user', AdminviewUserUserController::class);
+    Route::resource('/admin', AdminviewAdminAdminController::class);
+    Route::resource('/motor', AdminviewMotorMotorController::class);
+    Route::get('/motors/rented', [AdminviewMotorRentedController::class, 'index']);
+    Route::get('/motors/rented/pdf', [AdminviewMotorRentedController::class, 'generatePDF'])->name('admin.motors.rented.pdf');
+});
+
 // Route::get('/admin/home', [AdminDashboardController::class, 'Hal_Admin']);
-Route::get('/admin/home', [AdminDashboardController::class, 'Hal_Admin'])->name('admin.dashboard');
-Route::resource('/admin/user', AdminviewUserUserController::class);
-Route::resource('/admin/admin', AdminviewAdminAdminController::class);
-Route::resource('/admin/motor', AdminviewMotorMotorController::class);
-Route::get('/admin/motors/rented', [AdminviewMotorRentedController::class,'index']);
-Route::get('/admin/admin-login', [AdminLoginController::class, 'Hal_Admin_login']);
+// Route::get('/admin/home', [AdminDashboardController::class, 'Hal_Admin'])->name('admin.dashboard');
+// Route::resource('/admin/user', AdminviewUserUserController::class);
+// Route::resource('/admin/admin', AdminviewAdminAdminController::class);
+// Route::resource('/admin/motor', AdminviewMotorMotorController::class);
+// Route::get('/admin/motors/rented', [AdminviewMotorRentedController::class,'index']);
+// Route::get('/admin/admin-login', [AdminLoginController::class, 'Hal_Admin_login']);
 
 Auth::routes();
 

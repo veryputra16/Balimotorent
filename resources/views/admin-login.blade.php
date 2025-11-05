@@ -89,7 +89,7 @@
 
                     {{-- //Form Login --}}
                     <div class="form-login" id="login">
-                        <form action="" method="POST" class="login-body" id="login-body">
+                        <form action="{{ route('admin.login.post') }}" method="POST" class="login-body" id="login-body">
                             @csrf
                             <div class="input-group mb-2" >
                                 <span class="input-group-text" id="input-login1"><box-icon name='user'
@@ -125,7 +125,7 @@
                             </div>
                             <div class="btn-submit">
                                 {{-- <button type="submit" class="btn text-white button"><b>LOGIN</b></button> --}}
-                                <a href="/admin/home" class="btn text-white button">LOGIN</a>
+                                <button type="submit" class="btn text-white button"><b>LOGIN</b></button>
                             </div>
                         </form>
                     </div>
