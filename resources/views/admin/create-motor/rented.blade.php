@@ -149,6 +149,7 @@
                                     </div>
 
                                     <div class="col-lg-7">
+                                        <p><strong>Order ID:</strong> {{ $l->order_id }}</p>
                                         <p><strong>Tenant Name:</strong> {{ $l->user->name ?? '-' }}</p>
                                         <p><strong>Username:</strong> {{ $l->user->username ?? '-' }}</p>
                                         <p><strong>Email:</strong> {{ $l->user->email ?? '-' }}</p>
@@ -161,6 +162,8 @@
                                         <p><strong>Delivery Time:</strong> {{ $l->delivery_time }}</p>
                                         <p><strong>Return Date:</strong> {{ $l->return_date }}</p>
                                         <p><strong>Return Time:</strong> {{ $l->return_time }}</p>
+                                        <p><strong>Payment Method:</strong> {{ $l->payment_method }}</p>
+
 
                                         <p><strong>Total Price:</strong> Rp {{ number_format($l->total_price, 0, ',', '.') }}</p>
 

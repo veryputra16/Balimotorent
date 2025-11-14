@@ -30,7 +30,7 @@
         <h1 class="text-2xl font-bold text-gray-800 text-center mb-1">
             💳 Payment Summary
         </h1>
-        <p class="text-center text-gray-500 mb-6">Order #{{ $loan->id }}</p>
+        <p class="text-center text-gray-500 mb-6">Order #{{ $loan->order_id }}</p>
 
         <!-- Price Card -->
         <div class="bg-white shadow-inner rounded-xl p-5 mb-8 border border-gray-100">
