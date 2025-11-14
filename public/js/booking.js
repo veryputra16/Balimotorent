@@ -23,7 +23,7 @@ buttonModal.addEventListener('click', function(){
     const deliveryTime = document.getElementById('deliveryTime').value;
     const returnTime = document.getElementById('returnTime').value;
     const deliverBike = document.getElementById('deliverBike').value;
-    const returnBike = document.getElementById('returnBike').value;
+    const returnBike = document.getElementById('deliverBike').value; // lokasi kirim = dengan lokasi kembali
     const inputPrice = document.getElementById('inputPrice').value;
     const valueHarga = document.getElementById('valueHarga')
     const invalid = document.getElementById('invalid')
@@ -147,19 +147,19 @@ function deliver(val){
     }
 }
 
-function bikeReturn(val){
-    if(val == 'Custome'){
-        document.getElementById('specificReturn').style.display = 'block';
-        document.getElementById('returnBike').removeAttribute("name");
-        document.getElementById('returnBike').removeAttribute("id");
-        document.querySelector('.bike-return').setAttribute("value", "");
-    } else{
-        document.getElementById('specificReturn').style.display = 'none';
-        document.querySelector('.return-bike').setAttribute("name", "return_bike");
-        document.querySelector('.return-bike').setAttribute("id", "returnBike");
-        document.querySelector('.bike-return').setAttribute("value", val);
-    }
-}
+// function bikeReturn(val){
+//     if(val == 'Custome'){
+//         document.getElementById('specificReturn').style.display = 'block';
+//         document.getElementById('returnBike').removeAttribute("name");
+//         document.getElementById('returnBike').removeAttribute("id");
+//         document.querySelector('.bike-return').setAttribute("value", "");
+//     } else{
+//         document.getElementById('specificReturn').style.display = 'none';
+//         document.querySelector('.return-bike').setAttribute("name", "return_bike");
+//         document.querySelector('.return-bike').setAttribute("id", "returnBike");
+//         document.querySelector('.bike-return').setAttribute("value", val);
+//     }
+// }
 
 // Validate minimum rent 2 days with SweetAlert2
 document.addEventListener("DOMContentLoaded", function () {

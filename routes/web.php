@@ -28,6 +28,7 @@ use PHPUnit\TextUI\Help;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Kernel;
 use App\Models\User;
+use App\Http\Controllers\PaymentController;
 
 
 /*
@@ -47,7 +48,8 @@ Route::get('/how-to-rent', [HowToRentController::class, 'index']);
 Route::get('/contact',[ContactController::class, 'index']);
 
 // ROUTE BOOKING-BIKE
-Route::get('/rent/{motor:name}', [RentController::class, 'detail']);
+// Route::get('/rent/{motor:name}', [RentController::class, 'detail']);
+Route::get('/rent/{motor:name}', [RentController::class, 'detail'])->name('rent.detail');
 Route::get('/rent', [RentController::class, 'index']);
 Route::post('/rent', [RentController::class, 'booking']);
 
@@ -99,6 +101,9 @@ Route::middleware('auth:admin')->prefix('admin')->group(function () {
     Route::resource('/admin', AdminviewAdminAdminController::class);
     Route::resource('/motor', AdminviewMotorMotorController::class);
     Route::get('/motors/rented', [AdminviewMotorRentedController::class, 'index']);
+
+    Route::post('/motors/rented/{id}/toggle-return', [App\Http\Controllers\Admin\viewMotor\RentedMotorcycle::class, 'toggleReturn'])
+        ->name('admin.motors.rented.toggleReturn');
     Route::get('/motors/rented/pdf', [AdminviewMotorRentedController::class, 'generatePDF'])->name('admin.motors.rented.pdf');
 });
 
@@ -118,3 +123,15 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //Route CONVERT PDF
 // Route::get('/admin/motors/rented/pdf', [AdminviewMotorRentedController::class, 'generatePDF']);
 Route::get('/admin/motors/rented/pdf', [AdminviewMotorRentedController::class, 'generatePDF'])->name('admin.motors.rented.pdf');
+
+//payment gateway
+Route::middleware('auth')->group(function() {
+    Route::get('/payment-success/{id}', [PaymentController::class, 'paymentSuccess'])->name('payment.success');
+    Route::get('/payment-pending/{id}', [PaymentController::class, 'paymentPending'])->name('payment.pending');
+    Route::get('/payment-failed/{id}', [PaymentController::class, 'paymentFailed'])->name('payment.failed');
+    Route::get('/payment/{id}', [RentController::class, 'showPaymentPage'])->name('payment.show'); //testing page payemtn snap
+});
+
+
+// callback notifikasi dari Midtrans (tidak perlu auth)
+Route::post('/midtrans/notification', [PaymentController::class, 'handleNotification'])->name('midtrans.notification');

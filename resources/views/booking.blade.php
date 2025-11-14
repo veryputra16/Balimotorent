@@ -290,7 +290,7 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
                                                             data-bs-dismiss="modal"><b><i class="fas fa-window-close"></i>
                                                                 Close</b></button>
                                                         <button type="submit" class="btn modal-button-booking"><b><i
-                                                                    class="fas fa-tags"></i> Booking</b></button>
+                                                                    class="fas fa-tags"></i> Booking koknya</b></button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -389,11 +389,11 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
                                                 id="deliverBike" name="deliverBike" aria-label="Default select example"
                                                 onchange="deliver(this.value)">
                                                 <option value="">Select Location...</option>
-                                                <option value="Galkarent Pemogan">Galkarent Pemogan</option>
-                                                <option value="Galkarent Dalung">Galkarent Dalung</option>
-                                                <option value="Galkarent Kerobokan">Galkarent Kerobokan</option>
-                                                <option value="Galkarent Kapal">Galkarent Kapal</option>
-                                                <option value="Galkarent Mambal">Galkarent Mambal</option>
+                                                {{-- <option value="Galkarent Pemogan">Galkarent Pemogan</option>
+                                                <option value="Galkarent Dalung">Galkarent Dalung</option> --}}
+                                                <option value="Galkarent Kerobokan">Bali_motorent Kerobokan</option>
+                                                {{-- <option value="Galkarent Kapal">Galkarent Kapal</option>
+                                                <option value="Galkarent Mambal">Galkarent Mambal</option> --}}
                                                 <option value="Custome">Custom</option>
                                             </select>
                                             @error('delivery_bike')
@@ -401,7 +401,8 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
                                                     required.</span>
                                             @enderror
                                         </div>
-                                        <div class="col-lg-6">
+
+                                        {{-- <div class="col-lg-6" hidden>
                                             <label for="returnBike" class="form-label">Return Location</label>
                                             <select id="returnBike"
                                                 class="form-control return-bike @error('return_bike') is-invalid @enderror"
@@ -419,7 +420,12 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
                                                 <span id="invalidReturn" style="color: #FF0000;">The return bike field is
                                                     required.</span>
                                             @enderror
-                                        </div>
+                                        </div> --}}
+
+                                        {{-- Hidden return_bike input (otomatis ikut delivery) --}}
+                                        <input type="hidden" name="return_bike" id="hiddenReturnBike" value="">
+
+
                                     </div>
                                     <div class="mb-1" id="specificDeliver" style="display: none">
                                         <label for="deliverBike" class="form-label">Specific Location Deliver</label>
@@ -438,7 +444,42 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
                                     @enderror --}}
                                     </div>
 
+                                    <div class="mb-3 mt-3">
+                                        <label class="form-label"><strong>Payment Method</strong></label>
 
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="payment_method" id="paymentCard" value="Card / QR / Wallet" required>
+                                            <label class="form-check-label" for="paymentCard">
+                                                <strong>Card / QR / Wallet</strong><br>
+                                                <small class="text-muted">Pay securely using Credit/Debit Card, QRIS, or E-Wallet.<br>
+                                                (Visa, MasterCard, GoPay, OVO, DANA, ShopeePay)</small>
+                                            </label>
+                                        </div>
+
+                                        <div class="form-check mt-2">
+                                            <input class="form-check-input" type="radio" name="payment_method" id="paymentPayPal" value="PayPal">
+                                            <label class="form-check-label" for="paymentPayPal">
+                                                <strong>PayPal</strong><br>
+                                                <small class="text-muted">Pay easily using your PayPal account.</small>
+                                            </label>
+                                        </div>
+
+                                        <div class="form-check mt-2">
+                                            <input class="form-check-input" type="radio" name="payment_method" id="paymentPayPal" value="Manual Transfer">
+                                            <label class="form-check-label" for="paymentManualTransfer">
+                                                <strong>Manual Transfer</strong><br>
+                                                <small class="text-muted">Manual transfer to our bank account</small>
+                                            </label>
+                                        </div>
+
+                                        <div class="form-check mt-2">
+                                            <input class="form-check-input" type="radio" name="payment_method" id="paymentCash" value="Pay on Location (Cash)">
+                                            <label class="form-check-label" for="paymentCash">
+                                                <strong>Pay on Location (Cash)</strong><br>
+                                                <small class="text-muted">Pay directly at our rental office upon pickup.</small>
+                                            </label>
+                                        </div>
+                                    </div>
 
                                     <input type="text" hidden value="{{ $data->price }}" id="inputPrice">
                                     @if (!isset(auth()->user()->username))
@@ -480,7 +521,73 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
         </div>
     </div>
 
+    {{-- JS otomatis set return_bike sama dengan delivery_bike --}}
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const deliverSelect = document.getElementById('deliverBike');
+        const deliverInput = document.querySelector('.bike-deliver'); // input teks custom
+        const returnSelect = document.getElementById('returnBike');
+        const returnInput = document.querySelector('.bike-return');
 
+        // Sinkronisasi lokasi return dengan delivery
+        if (deliverSelect) {
+            deliverSelect.addEventListener('change', function () {
+                if (this.value !== 'Custome') {
+                    returnSelect.value = this.value;
+                    if (returnInput) returnInput.value = this.value;
+                }
+            });
+        }
+
+        // Kalau user pilih custom dan mulai ketik lokasi
+        if (deliverInput) {
+            deliverInput.addEventListener('input', function() {
+                // Update isi dropdown aslinya (agar modal ambil dari sini)
+                const deliverDropdown = document.querySelector('.deliver-bike');
+                if (deliverDropdown) deliverDropdown.setAttribute('value', this.value);
+                
+                // Sekaligus samakan lokasi return
+                if (returnInput) returnInput.value = this.value;
+                if (returnSelect) returnSelect.value = 'Custome';
+            });
+        }
+    });
+    </script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const paymentMethods = document.querySelectorAll('input[name="payment_method"]');
+        const buktiSection = document.querySelector('#myFile')?.closest('div.mb-3, div.d-flex.mb-3, label.form-label') 
+            ? document.querySelector('#myFile').parentElement.parentElement 
+            : null;
+
+        const labelBukti = document.querySelector('label[for="myFile"]');
+        const inputBukti = document.querySelector('#myFile');
+
+        // Awal: sembunyikan section bukti transfer
+        if (labelBukti && inputBukti) {
+            labelBukti.style.display = 'none';
+            inputBukti.style.display = 'none';
+            inputBukti.removeAttribute('required');
+        }
+
+        paymentMethods.forEach(radio => {
+            radio.addEventListener('change', function () {
+                if (this.value === 'Manual Transfer') {
+                    // Jika user pilih Manual Transfer, tampilkan input bukti
+                    labelBukti.style.display = 'block';
+                    inputBukti.style.display = 'block';
+                    inputBukti.setAttribute('required', true);
+                } else {
+                    // Kalau bukan Manual Transfer, sembunyikan input bukti
+                    labelBukti.style.display = 'none';
+                    inputBukti.style.display = 'none';
+                    inputBukti.removeAttribute('required');
+                }
+            });
+        });
+    });
+    </script>
 
     <script src="../js/booking.js"></script>
 @endsection

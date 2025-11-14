@@ -16,6 +16,7 @@ class RentedMotorcycle extends Controller
         $search = $request->input('search');
         $deliveryDate = $request->input('delivery_date');
         $returnDate = $request->input('return_date');
+        $perPage = $request->input('per_page', 12); // default 12
 
         $loans = Loan::with(['user', 'motor'])
             ->when($search, function ($query, $search) {
@@ -34,12 +35,13 @@ class RentedMotorcycle extends Controller
             ->when($returnDate, function ($query, $returnDate) {
                 $query->whereDate('return_date', '<=', $returnDate);
             })
-            ->paginate(12)
-            ->appends(request()->query()); // supaya pagination tetap membawa filter
+            ->paginate($perPage)
+            ->appends(request()->query()); // biar pagination tetep bawa filter & per_page
 
         return view('admin.create-motor.rented', [
             'title' => 'rented-motorcycle',
             'loan' => $loans,
+            'perPage' => $perPage,
         ]);
     }
 
@@ -100,6 +102,24 @@ class RentedMotorcycle extends Controller
         $dompdf->render();
 
         return response($dompdf->output(), 200)->header('Content-Type', 'application/pdf');
+    }
+
+    public function toggleReturn($id)
+    {
+        $loan = \App\Models\Loan::with('motor')->findOrFail($id);
+
+        // Toggle status returned
+        $loan->returned = !$loan->returned;
+        $loan->save();
+
+        // Update stok motor otomatis
+        if ($loan->returned) {
+            $loan->motor->increment('stok');
+        } else {
+            $loan->motor->decrement('stok');
+        }
+
+        return back()->with('success', 'Loan return status updated successfully.');
     }
 }
 use PDF;

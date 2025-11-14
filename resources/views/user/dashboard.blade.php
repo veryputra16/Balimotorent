@@ -76,23 +76,19 @@
                             </div>
                         </div>
                         <div class="tab-content" id="nav-tabContent">
+                            {{-- ================== ONGOING RENT ================== --}}
                             <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                                @if (count($data) == 0)
+                                @if (count($ongoingLoans) == 0)
                                     <div class="card mt-4" style="padding: 70px">
                                         <div class="card-body">
-                                            <p class="card-text text-center fw-bold">No Loans Transaction</p>
+                                            <p class="card-text text-center fw-bold">No Ongoing Rentals</p>
                                         </div>
                                     </div>
                                 @else
-                                    @foreach ($data as $d)
-                                    <div class="list-loan d-flex align-items-center {{ ($dateNow >= $d->return_date) ? 'coba' : '' }}">
+                                    @foreach ($ongoingLoans as $d)
+                                    <div class="list-loan d-flex align-items-center">
                                         <div class="motor-image text-center float-start">
-                                            @if ($d->motor->transmition == "Autometic")
                                             <img src="../../storage/{{ $d->motor->image }}" alt="" width="150" height="150">
-                                            @else
-                                            <img src="../../storage/{{ $d->motor->image }}" alt="" width="150" height="150">
-                                            @endif
-                                            <p class="mt-2 fw-bold"></p>
                                         </div>
                                         <div class="content">
                                             <div class="data-first d-flex">
@@ -111,7 +107,7 @@
                                                 <div class="return ms-3">
                                                     <ul class="d-flex">
                                                         <div class="one">
-                                                            <li>Delevery Time</li>
+                                                            <li>Delivery Time</li>
                                                             <li>Return Time</li>
                                                         </div>
                                                         <div class="two ms-4">
@@ -124,8 +120,8 @@
                                             <div class="data-second">
                                                 <ul class="d-flex">
                                                     <div class="one">
-                                                    <li>Deliver to</li>
-                                                    <li>Return Location</li>
+                                                        <li>Deliver to</li>
+                                                        <li>Return Location</li>
                                                     </div>
                                                     <div class="two ms-3">
                                                         <li><span class="fw-bold" style="color: #A5A2F6">{{ $d->delivery_bike }}</span></li>
@@ -134,127 +130,69 @@
                                                 </ul>
                                             </div>
                                         </div>
-                                        <div class="clearfix"></div>
-                                        @if ($dateNow >= $d->return_date)
-                                            <div class="disabled"> 
-                                                <h6 class="title-disabled">TIMES UP</h6>
-                                            </div>
-                                        @endif
                                     </div>
                                     @endforeach
                                 @endif
                             </div>
+
+                            {{-- ================== RENT LIST (COMPLETED / RETURNED) ================== --}}
                             <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                @if (count($loanFinish) == 0)
+                                @if (count($finishedLoans) == 0)
                                     <div class="card mt-4" style="padding: 70px">
                                         <div class="card-body">
-                                            <p class="card-text text-center fw-bold">No Loans Time Up</p>
+                                            <p class="card-text text-center fw-bold">No Completed Rentals</p>
                                         </div>
                                     </div>
                                 @else
-                                    @foreach ($loanFinish as $loan)
-                                    <div id="ulasanModal{{ $loan->motor->id }}" class="modal fade" tabindex="-1" aria-labelledby="ex" aria-hidden="true">
-                                        <div class="modal-dialog modal-lg animate__animated">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Your Review</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <form name="ulasan-peminjaman">
-                                                    <div class="modal-body" style="width: 100%;">
-                                                        <div class="title_body mb-4">
-                                                            <img src="../../storage/{{ $loan->motor->image }}" alt="" width="180" height="180" class="mx-auto d-block">
-                                                            <h4 class="text-center fw-bold">{{ $loan->motor->name }}</h4>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-lg-6 col-sm-12">
-                                                                <div class="input-group mb-3">
-                                                                    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" name="username" value="{{ $user->username }}" disabled>
-                                                                    <input type="hidden" name="username" value="{{ $user->username }}">
-                                                                </div>
-                                                            </div>
-                                                            <input type="hidden" name="name" value="{{ $user->name }}">
-                                                            <div class="col-lg-6 col-sm-12">
-                                                                <div class="input-group mb-3">
-                                                                    <input type="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1" name="email" value="{{ $user->email }}" disabled>
-                                                                    <input type="hidden" name="email" value="{{ $user->email }}">
-                                                                </div>
-                                                            </div>
-                                                            <input type="hidden" name="image" value="{{ $user->image }}">
-                                                            <div class="mb-3 col-lg-12">
-                                                                <textarea  class="form-control" placeholder="Message" id="exampleFormControlTextarea1" rows="7" name="massage" required></textarea>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn modal-button-close" data-bs-dismiss="modal"><b><i class="fas fa-window-close"></i> Close</b></button>
-                                                        <button type="submit" class="btn modal-button-send"><b><i class="fas fa-paper-plane"></i> Send</b></button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div id="ulasanDelete{{ $loan->motor->id }}" class="modal fade" tabindex="-1" aria-labelledby="ulasanDelete" aria-hidden="true">
-                                        <div id="modal" class="modal-dialog animate__animated animate__fadeInDownBig">
-                                            <div class="modal-content">
-                                                <div class="modal-header bg-warning">
-                                                    <h5 class="modal-title text-white">Warning</h5>
-                                                    <button type="button" id="closeButton" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="space-icon" style="width:70px;height:70px;margin:auto;">
-                                                        <lord-icon
-                                                            src="https://cdn.lordicon.com/keogyrep.json"
-                                                            trigger="loop"
-                                                            colors="primary:#e8e230"
-                                                            state="hover-1"
-                                                            style="width:70px;height:70px; border-radius:50%;">
-                                                        </lord-icon>
-                                                    </div>
-                                                    <p class="mt-3" style="text-align: center"><strong>Are you sure wanna delete your rent history ???</strong></p>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn modal-button-close" data-bs-dismiss="modal"><b><i class="fas fa-window-close"></i> No</b></button>
-                                                    <form action="/user/{{ auth()->user()->username }}/dashboard/{{ $loan->id }}" method="POST">
-                                                        @method('delete')
-                                                        @csrf
-                                                        <input type="hidden" name="image" value="{{ $loan->motor->image }}">
-                                                        <input type="hidden" name="id" value="{{ $loan->id }}">
-                                                        <button type="submit" class="btn modal-button-yes"><b><i class="fas fa-check"></i> Yes</b></button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
+                                    @foreach ($finishedLoans as $loan)
                                     <div class="list-loan d-flex align-items-center justify-content-between">
                                         <div class="col-md-2">
                                             <div class="motor-image text-center">
-                                                {{-- <img src="img/matic-bike/HondaBeat.png" alt="" width="150" height="150"> --}}
-                                                <img src="../../storage/{{ $d->motor->image }}" alt="" width="150" height="150">
+                                                <img src="../../storage/{{ $loan->motor->image }}" alt="" width="150" height="150">
                                             </div>
                                         </div>
                                         <div class="col-md-5">
                                             <div class="data-first mt-3">
                                                 <ul>
-                                                    <li style="font-size: 18px; font-weight:bold"> {{ $loan->motor->name }} <p style="font-size: 13px; font-weight:normal;">Rp. {{ number_format($loan->motor->price, 2, ",", ".") }}</p></li>
-                                                    <li>Rented Time : <span style="color:#A5A2F6; font-weight:bold; font-size:13px;">{{ date_format(date_create($loan->delivery_date), "d M Y") }} - {{ date_format(date_create($loan->return_date), "d M Y") }}</span></li>
+                                                    <li style="font-size: 18px; font-weight:bold">
+                                                        {{ $loan->motor->name }}
+                                                        <p style="font-size: 13px; font-weight:normal;">
+                                                            Rp. {{ number_format($loan->motor->price, 2, ",", ".") }}
+                                                        </p>
+                                                    </li>
+                                                    <li>Rented Time :
+                                                        <span style="color:#A5A2F6; font-weight:bold; font-size:13px;">
+                                                            {{ date_format(date_create($loan->delivery_date), "d M Y") }}
+                                                            - {{ date_format(date_create($loan->return_date), "d M Y") }}
+                                                        </span>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </div>
                                         <div class="col-md-3 me-5">
                                             <div class="data-second mt-3">
                                                 <ul>
-                                                    <li style="font-weight:bold; text-align: center">Price <p style="font-size: 13px; color:#A5A2F6;">Rp. {{  number_format($loan->total_price, 2, ",", ".") }}</p><hr></li>
+                                                    <li style="font-weight:bold; text-align: center">
+                                                        Price
+                                                        <p style="font-size: 13px; color:#A5A2F6;">
+                                                            Rp. {{ number_format($loan->total_price, 2, ",", ".") }}
+                                                        </p>
+                                                        <hr>
+                                                    </li>
                                                     <li>
                                                         <div class="d-flex" style="margin-top:-10px">
-                                                        <button type="button" class="btn text-white btn-sm fw-bold" style="background:#A5A2F6; width:110px;" id="buttonModal" data-bs-toggle="modal" data-bs-target="#ulasanModal{{ $loan->motor->id }}">
-                                                            Give Any Review
-                                                        </button>
-                                                        <button type="submit" class="btn btn-danger text-white btn-sm ms-2"  data-bs-toggle="modal" data-bs-target="#ulasanDelete{{ $loan->motor->id }}" >
-                                                            <i class="fas fa-trash-alt"></i>
-                                                        </button>
+                                                            <button type="button" class="btn text-white btn-sm fw-bold"
+                                                                    style="background:#A5A2F6; width:110px;"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#ulasanModal{{ $loan->motor->id }}">
+                                                                Give Review
+                                                            </button>
+                                                            <button type="button"
+                                                                    class="btn btn-danger text-white btn-sm ms-2"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#ulasanDelete{{ $loan->motor->id }}">
+                                                                <i class="fas fa-trash-alt"></i>
+                                                            </button>
                                                         </div>
                                                     </li>
                                                 </ul>

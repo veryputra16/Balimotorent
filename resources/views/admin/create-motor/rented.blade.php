@@ -36,9 +36,35 @@
         </div>
 
         {{-- 🔁 Reset dan Export --}}
-        <div class="col-md-3 text-right">
+        {{-- <div class="col-md-3 text-right">
             <a href="{{ url('/admin/motors/rented') }}" class="btn btn-secondary mb-2">Reset</a>
             <a href="{{ route('admin.motors.rented.pdf', request()->query()) }}" class="btn btn-success mb-2">
+                Export Data
+            </a>
+        </div> --}}
+
+        {{-- 🔁 Reset, Export & Show Per Page --}}
+        <div class="col-md-3 text-right">
+            {{-- Dropdown jumlah data per halaman --}}
+            <form action="{{ url('/admin/motors/rented') }}" method="GET" class="d-inline">
+                {{-- Bawa parameter filter lain supaya tidak hilang --}}
+                <input type="hidden" name="search" value="{{ request('search') }}">
+                <input type="hidden" name="delivery_date" value="{{ request('delivery_date') }}">
+                <input type="hidden" name="return_date" value="{{ request('return_date') }}">
+
+                <div class="form-group mb-2">
+                    <label for="per_page" class="small text-muted d-block text-left">Show per page</label>
+                    <select name="per_page" id="per_page" class="form-control form-control-sm" onchange="this.form.submit()">
+                        <option value="12" {{ request('per_page') == 12 ? 'selected' : '' }}>12</option>
+                        <option value="20" {{ request('per_page') == 20 ? 'selected' : '' }}>20</option>
+                        <option value="50" {{ request('per_page') == 50 ? 'selected' : '' }}>50</option>
+                        <option value="100" {{ request('per_page') == 100 ? 'selected' : '' }}>100</option>
+                    </select>
+                </div>
+            </form>
+
+            <a href="{{ url('/admin/motors/rented') }}" class="btn btn-secondary mb-2 w-100">Reset</a>
+            <a href="{{ route('admin.motors.rented.pdf', request()->query()) }}" class="btn btn-success mb-2 w-100">
                 Export Data
             </a>
         </div>
@@ -61,7 +87,7 @@
         <tbody class="text-center">
             @php $i = ($loan->currentPage() - 1) * $loan->perPage() + 1; @endphp
             @forelse ($loan as $l)
-                <tr>
+                <tr class="{{ $l->returned ? 'table-success' : '' }}">
                     <td>{{ $i++ }}</td>
                     <td>{{ $l->user->name }}</td>
                     <td>{{ $l->user->telpon }}</td>
@@ -76,6 +102,21 @@
                             <input type="hidden" value="{{ $l->id }}" name="id">
                             <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are You Sure Wanna Delete This One ?')">
                                 <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </form>
+                        {{-- ✅ Toggle Return Button --}}
+                        <form action="{{ route('admin.motors.rented.toggleReturn', $l->id) }}" method="POST" class="d-inline">
+                            @csrf
+                            <button 
+                                type="button" 
+                                class="btn btn-sm {{ $l->returned ? 'btn-warning' : 'btn-success' }} toggle-return-btn"
+                                data-returned="{{ $l->returned ? '1' : '0' }}"
+                            >
+                                @if ($l->returned)
+                                    <i class="fas fa-undo"></i> Mark as Not Returned
+                                @else
+                                    <i class="fas fa-check"></i> Mark as Returned
+                                @endif
                             </button>
                         </form>
                         <a href="#" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#view{{ $l->id }}">
@@ -123,10 +164,21 @@
 
                                         <p><strong>Total Price:</strong> Rp {{ number_format($l->total_price, 0, ',', '.') }}</p>
 
-                                        @php
+                                        {{-- @php
                                             $returnDateTime = \Carbon\Carbon::parse($l->return_date . ' ' . $l->return_time);
                                             $hoursPassed = now()->diffInHours($returnDateTime, false);
                                             $status = $hoursPassed <= -12 ? 'completed' : 'rented';
+                                        @endphp --}}
+
+                                        @php
+                                            $returnDateTime = \Carbon\Carbon::parse($l->return_date . ' ' . $l->return_time);
+                                            $hoursPassed = now()->diffInHours($returnDateTime, false);
+
+                                            if ($l->returned || $hoursPassed <= -12) {
+                                                $status = 'completed';
+                                            } else {
+                                                $status = 'rented';
+                                            }
                                         @endphp
 
                                         <p><strong>Status:</strong>
@@ -171,6 +223,36 @@
     <div class="d-flex justify-content-center">
         {{ $loan->links() }}
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.toggle-return-btn').forEach(function (button) {
+            button.addEventListener('click', function (e) {
+                e.preventDefault();
+                const form = this.closest('form');
+                const isReturned = this.dataset.returned === '1';
+                const message = isReturned 
+                    ? 'Mark this as NOT returned?' 
+                    : 'Mark this as returned?';
+
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: message,
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: isReturned ? '#f6c23e' : '#1cc88a',
+                    cancelButtonColor: '#858796',
+                    confirmButtonText: 'Yes, proceed'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit();
+                    }
+                });
+            });
+        });
+    });
+    </script>
 </div>
 
 @endsection
